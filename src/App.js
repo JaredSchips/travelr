@@ -1,24 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import { useReducer } from 'react';
+import selectionReducer from './context/selectionReducer';
+import { GlobalContext } from './context/context';
+import Earth from './components/Earth';
 
 function App() {
+  const [selection, selectionDispatch] = useReducer(selectionReducer,null)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <GlobalContext.Provider value={{selection, selectionDispatch}}>
+      <div style={{position:'absolute',color:'white',zIndex:1,padding:'1rem'}}>
+        {selection ? selection.properties.NAME : 'No country selected'}
+      </div>
+      <Earth />
+    </GlobalContext.Provider>
   );
 }
 
