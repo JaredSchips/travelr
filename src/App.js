@@ -1,7 +1,14 @@
 import { useReducer } from 'react';
 import selectionReducer from './context/selectionReducer';
 import { GlobalContext } from './context/context';
-import SignUp from './components/SignUp';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+import SignupPage from './pages/Signup';
+import LoginPage from './pages/Login';
+import Header from './components/Header'
 // import Earth from './components/Earth';
 
 function App() {
@@ -13,11 +20,17 @@ function App() {
     //   </div>
     //   <Earth />
     // </GlobalContext.Provider>
-   <div>
+    <div className="min-h-full h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="max-w-md w-full space-y-8">
+     <BrowserRouter>
+        <Routes>
+            <Route path="/" element={<LoginPage/>} />
+            <Route path="/signup" element={<SignupPage/>} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  </div>
 
- <SignUp />
-  
-  </div> 
   );
 }
 
