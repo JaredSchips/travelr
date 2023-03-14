@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import image from './globe.png'
 
 // function DiscussionBoard() {
 //   // Define state to keep track of messages
@@ -71,16 +72,27 @@ const DiscussionBoard = () => {
   };
 
   return (
-    <div className="discussion-board">
+    <div className="mb-10">
+    <div className="flex justify-center">
+        <img 
+            alt=""
+            className="h-20 w-20"
+            src={image}/>
+    </div>
+
+
+    <div className="discussion-board mt-8 space-y-6 border-gray-300">
+      
       <h1>Welcome to the Chat!</h1>
-      <form onSubmit={handleMessageSubmit}>
-        <input type="text" name="username" placeholder="Username" />
+      <form onSubmit={handleMessageSubmit} className="space-y-px">
+        <input type="text" name="username" placeholder="Username" className="m-5 text-purple-600 focus:ring-purple-500 border-gray-300 rounded"/>
         <input
           type="text"
           name="message"
           placeholder="Type your message here"
+          lassName="font-medium ml-10 h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded"
         />
-        <button type="submit">Submit</button>
+        <button type="submit" className="m-5 text-purple-600 focus:ring-purple-500 border-gray-300 rounded">Submit</button>
       </form>
       <hr />
       {messages.map((message, index) => (
@@ -93,6 +105,7 @@ const DiscussionBoard = () => {
           <hr />
         </div>
       ))}
+    </div>
     </div>
   );
 };
