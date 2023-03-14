@@ -1,0 +1,41 @@
+nav {
+    background: none;
+    width: max-content;
+    display: block;
+    padding: 0.7rem 1.7rem;
+    z-index: 2;
+    position: fixed;
+    top: 50%;
+    /* center vertically */
+    right: 0;
+    /* position to the right */
+    transform: translateY(-50%);
+    /* center vertically */
+    display: flex;
+    flex-direction: column;
+    /* make links vertical */
+    justify-content: center;
+    /* center vertically */
+    gap: 0.8rem;
+    border-radius: 3rem;
+    backdrop-filter: blur(15px);
+}
+
+nav a {
+    background: transparent;
+    padding: 0.8rem;
+    border-radius: 50%;
+    display: flex;
+    color: white;
+    /* set the color to white */
+    font-size: 1.1rem;
+}
+
+nav a:hover {
+    background: rgb(134, 133, 133);
+}
+
+nav a.active {
+    background: dark;
+    color: light;
+}

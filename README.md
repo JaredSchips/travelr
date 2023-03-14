@@ -25,12 +25,11 @@ MERN apps are popular due to their flexibility, scalability, and ability to deli
 
 ## User Story
 
-```md
 - As a user, I want to be able to create and manage my own posts, as well as view and interact with posts created by other users.
 - I want the interface to be intuitive and easy to navigate, and I want to be able to search for specific posts using keywords.
 - Additionally, I want the application to be responsive and work well on both desktop and mobile devices.
-- I also want to feel secure using the application, so I expect the application to include user authentication and protect sensitive information. - Ultimately, I want to have a positive user experience and feel like the application is providing value to me.
-```
+- I also want to feel secure using the application, so I expect the application to include user authentication and protect sensitive information.
+- Ultimately, I want to have a positive user experience and feel like the application is providing value to me.
 
 ## Project Requirements
 
