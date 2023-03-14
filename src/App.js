@@ -2,7 +2,6 @@ import { useReducer } from "react";
 import selectionReducer from "./context/selectionReducer";
 import { GlobalContext } from "./context/context";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import SignupPage from "./pages/Signup";
 import LoginPage from "./pages/Login";
 import Header from "./components/header";
@@ -25,7 +24,7 @@ function App() {
             padding: "1rem",
           }}
         >
-          {selection ? selection.properties.NAME : ""}
+          {selection ? selection.properties.NAME : "No country selected"}
         </div>
 
         <Earth />
@@ -41,7 +40,6 @@ function App() {
         </div>
       </div>
     </>
-
   );
 }
 
