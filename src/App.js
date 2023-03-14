@@ -24,7 +24,7 @@ function App() {
             padding: "1rem",
           }}
         >
-          {selection ? selection.properties.NAME : "No country selected"}
+          {selection ? selection.properties.NAME : ""}
         </div>
 
         <Earth />
