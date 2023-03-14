@@ -5,17 +5,21 @@ nav {
     padding: 0.7rem 1.7rem;
     z-index: 2;
     position: fixed;
-    left: 2rem;
-    /* set the left position to a specific value */
     top: 50%;
+    /* center vertically */
+    right: 0;
+    /* position to the right */
     transform: translateY(-50%);
+    /* center vertically */
     display: flex;
     flex-direction: column;
+    /* make links vertical */
+    justify-content: center;
+    /* center vertically */
     gap: 0.8rem;
     border-radius: 3rem;
     backdrop-filter: blur(15px);
 }
-
 
 nav a {
     background: transparent;
