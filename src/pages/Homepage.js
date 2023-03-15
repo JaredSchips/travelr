@@ -3,11 +3,12 @@ import { useContext, useEffect } from "react"
 import { GlobalContext } from "../context/context"
 import { useState } from "react"
 import { BiMessageSquareDetail } from "react-icons/bi";
-import { AiOutlinePlusCircle, AiOutlineUnorderedList, AiOutlineHeart } from "react-icons/ai";
+import { AiOutlinePlusCircle, AiOutlineUnorderedList, AiOutlineHeart, AiOutlineClose } from "react-icons/ai";
+import { SET_SELECTION } from "../context/actions";
 
 
 export default function Homepage() {
-  const { selection } = useContext(GlobalContext)
+  const { selection, selectionDispatch } = useContext(GlobalContext)
   const [summary, setSummary] = useState('')
   const [imageUrl, setImageUrl] = useState('')
 
@@ -26,7 +27,13 @@ export default function Homepage() {
     <div>
       <div>
       </div>
-      {selection && <div className="absolute left-0 top-0 bg-black z-10 w-3/12 h-full opacity-80 text-white">
+      {selection && <div className="absolute left-0 top-0 bg-black z-10 w-3/12 h-full opacity-80 text-white overflow-scroll">
+        <button
+          onClick={() => selectionDispatch({ type: SET_SELECTION, payload: null })}
+          className="absolute text-3xl p-2 rounded-bl-xl bg-black/50 top-0 right-0"
+          >
+          <AiOutlineClose />
+        </button>
         <img className="min-w-full" alt="A city" src={imageUrl} />
         <div className="grid gap-2 p-4">
           <div>
