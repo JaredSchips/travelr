@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useRef } from 'react';
 import { GlobalContext } from '../context/context';
 import { SET_SELECTION } from '../context/actions';
 import Globe from 'react-globe.gl';
@@ -7,8 +7,12 @@ function Earth() {
   const [countries, setCountries] = useState({ features: [] });
   const [cities, setCities] = useState([]);
   const {selection, selectionDispatch} = useContext(GlobalContext)
+  const globe = useRef()
 
   useEffect(() => {
+    console.log(globe.current)
+    globe.current.pointOfView({altitude:1.5})
+
     fetch('./geojson/ne_110m_admin_0_countries.geojson')
       .then(res =>  res.json())
       .then(countries => setCountries(countries));
@@ -21,8 +25,10 @@ function Earth() {
   return (
     <div className='absolute left-0 top-0'>
       <Globe
+        ref={globe}
         globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
         backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
+        waitForGlobeReady={true}
 
         polygonsData={countries.features.filter(country => country.properties.NAME !== 'Antarctica')}
         polygonAltitude={0.01}
