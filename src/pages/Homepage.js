@@ -13,7 +13,7 @@ export default function Homepage() {
   const [imageUrl, setImageUrl] = useState('')
 
   useEffect(() => {
-    if (!selection) {console.log('null');return}
+    if (!selection) return
     fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${selection.properties.name}`)
       .then(res => res.json())
       .then(description => setSummary(description.extract))
