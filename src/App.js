@@ -7,6 +7,8 @@ import SignupPage from "./pages/Signup";
 import LoginPage from "./pages/Login";
 import Header from "./components/Header";
 import NavigationBar from "./components/NavigationBar";
+import ProfilePage from "./pages/Profile";
+import Chat from "./components/Chat";
 
 function App() {
   const [selection, selectionDispatch] = useReducer(selectionReducer, null);
@@ -23,10 +25,14 @@ function App() {
               <Route path="/" element={<Homepage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignupPage />} />
+              <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/chat" element={<Chat />} />
+              
             </Routes>
           </BrowserRouter>
         </div>
       </div>
+      
       </GlobalContext.Provider>
     </>
   );
