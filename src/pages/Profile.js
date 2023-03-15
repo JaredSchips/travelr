@@ -16,36 +16,27 @@ const ProfilePage = () => {
       <h1 className="mt-4 text-2xl font-bold">John Doe</h1>
       <p className="mt-2 text-gray-500">Traveler</p>
       <div className="mt-4  flex justify-between">
-
-
-     
       <div className=''>
         <button
           type='submit'
-          className={buttonStyling}>
-         
+          className={buttonStyling}> 
           <FaHeart size='2.5rem' />
         </button>
       </div>
-    
       <div className=''>
         <button
           type='submit'
-          className={buttonStyling}>
-          
+          className={buttonStyling}>  
           <FaChartLine size='2.5rem' />
         </button>
       </div>
-
       <div className=''>
         <button
           type='submit'
           className={buttonStyling}>
-         
           <FaEnvelopeOpenText size='2.5rem' />
         </button>
       </div>
-
       <div className=''>
         <button
           type='submit'
@@ -54,16 +45,6 @@ const ProfilePage = () => {
           <FaGlobeEurope size='2.5rem' />
         </button>
       </div>
-
-        {/* <div>
-          <p className="font-bold"><FaChartLine /></p>
-        </div>
-        <div>
-          <p className="font-bold"><FaEnvelopeOpenText /></p>
-        </div>
-        <div>
-          <p className="font-bold"><FaGlobeEurope /></p>
-        </div> */}
       </div>
     </div>
     </>
