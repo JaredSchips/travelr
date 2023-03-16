@@ -1,7 +1,8 @@
-import { useState, useEffect, useContext, useRef } from 'react';
+import { useState, useEffect, useContext, useRef, useCallback } from 'react';
 import { GlobalContext } from '../context/context';
 import { SET_SELECTION } from '../context/actions';
 import Globe from 'react-globe.gl';
+import { useResizeDetector } from 'react-resize-detector';
 
 function Earth() {
   const [countries, setCountries] = useState({ features: [] });
@@ -9,8 +10,11 @@ function Earth() {
   const {selection, selectionDispatch} = useContext(GlobalContext)
   const globe = useRef()
 
+  const { width, height, ref } = useResizeDetector({
+    handleHeight: true,
+  });
+  
   useEffect(() => {
-    console.log(globe.current)
     globe.current.pointOfView({altitude:1.5})
 
     fetch('./geojson/ne_110m_admin_0_countries.geojson')
@@ -23,12 +27,14 @@ function Earth() {
   }, []);
 
   return (
-    <div className='absolute left-0 top-0'>
+    <div className='absolute left-0 top-0 w-full h-full' ref={ref}>
       <Globe
         ref={globe}
         globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
         backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
         waitForGlobeReady={true}
+        width={width}
+        height={height}
 
         polygonsData={countries.features.filter(country => country.properties.NAME !== 'Antarctica')}
         polygonAltitude={0.01}
