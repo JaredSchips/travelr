@@ -1,0 +1,8 @@
+{
+  "short_name": "Travelr",
+  "name": "Travelr",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
