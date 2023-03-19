@@ -5,23 +5,43 @@ const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
 	Query: {
-		getAllUsers: async (_parent, args, context) => {
-
+		getAllUsers: async (_parent, _args, context) => {
       try {
-        console.log(args, context)
+				console.log(context.user)
+        return await User.find()
       } catch (err) {
-        throw new Error('GetAllUsers Error', err)
+        console.log(err)
+				return err
       }
     },
 	},
 	Mutation: {
-		createUser: async (_parent, args, context) => {
+		createUser: async (_parent, args) => {
       try {
-			console.log(args, context);
-		} catch (err) {
-			throw new Error('GetAllUsers Error', err);
-		}
+        return await User.create(args)
+      } catch (err) {
+        console.log(err)
+				return err
+      }
     },
+		
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+
+      if (!user) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+
+      const token = signToken(user);
+
+      return { token, user };
+    }
 	},
 };
 
