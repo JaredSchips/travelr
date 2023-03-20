@@ -17,21 +17,21 @@ const Nav = () => {
         <AiOutlineHome />
       </a>
       <a
-        href="#log-in"
+        href="/signUp"
         onClick={() => setActiveNav("#log-in")}
         className={activeNav === "#experience" ? "active" : ""}
       >
         <AiOutlineUser />
       </a>
       <a
-        href="#sign-up"
+        href="/profile"
         onClick={() => setActiveNav("sign-up")}
         className={activeNav === "#services" ? "active" : ""}
       >
         <HiOutlineUserGroup />
       </a>
       <a
-        href="#chat"
+        href="/chat"
         onClick={() => setActiveNav("#chat")}
         className={activeNav === "#contact" ? "active" : ""}
       >
