@@ -5,10 +5,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import SignupPage from "./pages/Signup";
 import LoginPage from "./pages/Login";
-import Header from "./components/Header";
 import NavigationBar from "./components/NavigationBar";
 import ProfilePage from "./pages/Profile";
 import Chat from "./components/Chat";
+import FavoriteCountries from "./components/FavList";
+import BucketList from "./components/BucketList";
 
 function App() {
   const [selection, selectionDispatch] = useReducer(selectionReducer, null);
@@ -27,6 +28,8 @@ function App() {
               <Route path="/signup" element={<SignupPage />} />
               <Route path="/profile" element={<ProfilePage />} />
               <Route path="/chat" element={<Chat />} />
+              <Route path="/favorite" element={<FavoriteCountries />} />
+              <Route path="/bucket" element={<BucketList />} />
               
             </Routes>
           </BrowserRouter>
