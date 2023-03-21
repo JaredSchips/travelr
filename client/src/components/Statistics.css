@@ -1,0 +1,22 @@
+.statistic-item {
+    border: 2px solid #e5e7eb;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.statistic-item:hover {
+    background-color: #7c3aed;
+    color: white;
+    cursor: pointer;
+}
+
+.progress-bar {
+    height: 1rem;
+    overflow: hidden;
+}
+
+.progress-bar-inner {
+    height: 100%;
+    transition: width 0.3s;
+}

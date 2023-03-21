@@ -19,6 +19,9 @@ import ProfilePage from "./pages/Profile";
 import Chat from "./components/Chat";
 import FavoriteCountries from "./components/FavList";
 import BucketList from "./components/BucketList";
+import VisitedPlaces from "./components/VisitedPlaces";
+import Statistics from "./components/Statistics";
+import { useState } from "react";
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -41,29 +44,58 @@ const client = new ApolloClient({
 
 function App() {
   const [selection, selectionDispatch] = useReducer(selectionReducer, null);
+  const [iconBlack, setIconsBlack] = useState(false);
+  console.log(iconBlack);
   return (
     <ApolloProvider client={client}>
       <GlobalContext.Provider value={{ selection, selectionDispatch }}>
-      <div>
-        <NavigationBar />
-      </div>
-      <div className="min-h-full h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-md w-full space-y-8">
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Homepage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/signup" element={<SignupPage />} />
-              <Route path="/profile" element={<ProfilePage />} />
-              <Route path="/chat" element={<Chat />} />
-              <Route path="/favorite" element={<FavoriteCountries />} />
-              <Route path="/bucket" element={<BucketList />} />
-              
-            </Routes>
-          </BrowserRouter>
+        <div>
+          <NavigationBar iconBlack={iconBlack} />
         </div>
-      </div>
-      
+        <div className="min-h-full h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-md w-full space-y-8">
+            <BrowserRouter>
+              <Routes>
+                <Route
+                  path="/"
+                  element={<Homepage setIconsBlack={setIconsBlack} />}
+                />
+                <Route
+                  path="/login"
+                  element={<LoginPage setIconsBlack={setIconsBlack} />}
+                />
+                <Route
+                  path="/signup"
+                  element={<SignupPage setIconsBlack={setIconsBlack} />}
+                />
+                <Route
+                  path="/profile"
+                  element={<ProfilePage setIconsBlack={setIconsBlack} />}
+                />
+                <Route
+                  path="/chat"
+                  element={<Chat setIconsBlack={setIconsBlack} />}
+                />
+                <Route
+                  path="/favorite"
+                  element={<FavoriteCountries setIconsBlack={setIconsBlack} />}
+                />
+                <Route
+                  path="/bucket"
+                  element={<BucketList setIconsBlack={setIconsBlack} />}
+                />
+                <Route
+                  path="/visited"
+                  element={<VisitedPlaces setIconsBlack={setIconsBlack} />}
+                />
+                <Route
+                  path="/stats"
+                  element={<Statistics setIconsBlack={setIconsBlack} />}
+                />
+              </Routes>
+            </BrowserRouter>
+          </div>
+        </div>
       </GlobalContext.Provider>
     </ApolloProvider>
   );
