@@ -1,0 +1,9 @@
+.country-block {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.country-block:hover {
+    background-color: #7c3aed;
+    color: white;
+    cursor: pointer;
+}
