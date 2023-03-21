@@ -10,7 +10,6 @@ import ProfilePage from "./pages/Profile";
 import Chat from "./components/Chat";
 import FavoriteCountries from "./components/FavList";
 import BucketList from "./components/BucketList";
-import PlacesVisited from "./components/VisitedPlaces";
 import VisitedPlaces from "./components/VisitedPlaces";
 
 function App() {
