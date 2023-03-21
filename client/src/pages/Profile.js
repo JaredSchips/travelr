@@ -11,7 +11,8 @@ import BucketList from "../components/BucketList";
 import FavoriteCountries from "../components/FavList";
 import Chat from "../components/Chat";
 
-const ProfilePage = () => {
+const ProfilePage = ({ setIconsBlack }) => {
+  setIconsBlack(true);
   const [currentPage, setCurrentPage] = useState(1);
 
   const renderPage = () => {
