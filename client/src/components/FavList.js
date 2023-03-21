@@ -53,7 +53,7 @@ function FavoriteCountries() {
       <div className="bg-white-500 mt-2 flex justify-center items-center bg-globe bg-no-repeat bg-cover">
         <div className="max-w-md w-full rounded-lg bg-white shadow-lg p-3">
           <h2 className="text-2xl font-bold mb-4">
-            Travelr | My Favorite Countries
+            Travelr | My Favorite Countries ❤️
           </h2>
           <div className="grid grid-cols-3 gap-4 bg-purple-500 p-4 rounded-lg mb-4">
             {favoriteCountries.map((country, index) => (
@@ -69,7 +69,7 @@ function FavoriteCountries() {
                   />
                 )}
                 <div className="z-10 relative country-label">
-                  {"❤ "}
+                  {"❤️"}
                   {country}
                 </div>
               </div>

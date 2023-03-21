@@ -12,34 +12,40 @@ function Statistics() {
   return (
     <div>
       <div className="flex justify-center">
-        <img alt="" className="h-20 w-20" src={image} />
+        <img alt="" className="h-20 w-20 mb-4" src={image} />
       </div>
       <div className="bg-white-500 mt-2 flex justify-center items-center bg-globe bg-no-repeat bg-cover">
-        <div className="max-w-md w-full rounded-lg bg-white shadow-lg p-3">
-          <h2 className="text-2xl font-bold mb-4">
+        <div className="max-w-md w-full rounded-lg bg-white shadow-lg p-6">
+          <h2 className="text-2xl font-bold mb-6 text-center">
             Travelr | My Travel Statistics
           </h2>
-          <div className="grid grid-cols-3 gap-4 text-center mb-4">
+          <div className="grid grid-cols-3 gap-4 text-center mb-6">
             <div className="statistic-item">
-              <h3 className="text-purple-500 text-xl">{countriesVisited}</h3>
-              <p>Countries Visited</p>
+              <h3 className="text-purple-500 text-3xl font-bold">
+                {countriesVisited}
+              </h3>
+              <p className="text-gray-700 font-semibold">Countries Visited</p>
             </div>
             <div className="statistic-item">
-              <h3 className="text-purple-500 text-xl">{countriesLiked}</h3>
-              <p>Countries Liked</p>
+              <h3 className="text-purple-500 text-3xl font-bold">
+                {countriesLiked}
+              </h3>
+              <p className="text-gray-700 font-semibold">Countries Liked</p>
             </div>
             <div className="statistic-item">
-              <h3 className="text-purple-500 text-xl">{commentsMade}</h3>
-              <p>Comments Made</p>
+              <h3 className="text-purple-500 text-3xl font-bold">
+                {commentsMade}
+              </h3>
+              <p className="text-gray-700 font-semibold">Comments Made</p>
             </div>
           </div>
           <div>
             <h3 className="text-xl font-bold mb-2">
               Total Countries Visited: {visitedPercentage.toFixed(1)}%
             </h3>
-            <div className="progress-bar bg-gray-300 rounded-lg">
+            <div className="progress-bar bg-gray-300 rounded-lg h-4">
               <div
-                className="progress-bar-inner bg-purple-500 rounded-lg"
+                className="progress-bar-inner bg-purple-500 rounded-lg h-full"
                 style={{ width: `${visitedPercentage}%` }}
               ></div>
             </div>

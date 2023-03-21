@@ -12,6 +12,7 @@ import FavoriteCountries from "./components/FavList";
 import BucketList from "./components/BucketList";
 import VisitedPlaces from "./components/VisitedPlaces";
 import Statistics from "./components/Statistics";
+import Footer from "./components/Footer";
 import { useState } from "react";
 
 function App() {
@@ -21,12 +22,10 @@ function App() {
   return (
     <>
       <GlobalContext.Provider value={{ selection, selectionDispatch }}>
-        <div>
-          <NavigationBar iconBlack={iconBlack} />
-        </div>
         <div className="min-h-full h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-md w-full space-y-8">
             <BrowserRouter>
+              <NavigationBar iconBlack={iconBlack} />
               <Routes>
                 <Route
                   path="/"
@@ -66,6 +65,7 @@ function App() {
                 />
               </Routes>
             </BrowserRouter>
+            <Footer />
           </div>
         </div>
       </GlobalContext.Provider>
