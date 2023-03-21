@@ -31,10 +31,11 @@ export default function Signup() {
     try {
         const mutationResponse = await createUser({
         variables: {
-          email: signupState.email,
+          firstName: "Jared",
+          lastName: "Schips",
+          username: signupState.username,
+          email: signupState['email-address'],
           password: signupState.password,
-          firstName: signupState.firstName,
-          lastName: signupState.lastName,
         },
       });
       const token = mutationResponse.data.addUser.token;
