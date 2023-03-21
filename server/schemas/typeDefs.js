@@ -6,6 +6,11 @@ const typeDefs = gql`
     name: String
   }
 
+  type City {
+    _id: ID
+    name: String
+  }
+
   type User {
     _id: ID
     firstName: String
@@ -14,9 +19,9 @@ const typeDefs = gql`
     email: String
     password: String
     createdAt: String
-    visitedCountries: [Country]
-    likedCountries: [Country]
-    bucketList: [Country]
+    bucketList: [City]
+    favoritesList: [City]
+    visitedCities: [City]
   }
 
   type Comment {
@@ -27,7 +32,7 @@ const typeDefs = gql`
 
   type Chat {
     _id: ID
-    country: Country
+    city: City
     comments: Comment
   }
 
@@ -54,6 +59,49 @@ const typeDefs = gql`
       password: String!
       ): Auth
 
+    updateUser(
+      firstName: String,
+      lastName: String,
+      username: String,
+      email: String,
+      password: String
+    ): User
+
+    addToBucketList(
+      city: String!
+    ): City
+
+    deleteFromBucketList(
+      city: String!
+    ): City
+
+    addToFavorites(
+      city: String!
+    ): City
+
+    deleteFromFavorites(
+      city: String!
+    ): City
+
+    addToVisitedCities(
+      city: String!
+    ): City
+
+    createComment(
+      city: String!,
+      message: String!
+    ): Comment
+
+    updateComment(
+      city: String!,
+      id: ID!,
+      newMessage: String!
+    ): Comment
+
+    deleteComment(
+      city: String!,
+      id: ID!
+    ): Comment
   }
 `;
 

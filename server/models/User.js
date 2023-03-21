@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
-const Country = require("./Country");
+const City = require("./City");
 const { Schema } = mongoose;
 const bcrypt = require("bcryptjs");
-// const Order = require('./Order');
 
 const userSchema = new Schema({
   firstName: {
@@ -35,23 +34,21 @@ const userSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  visitedCountries: {
-    type: [Country],
+  visitedCities: {
+    type: [City],
     required: true,
     default: [],
   },
-  likedCountries: {
-    type: [Country],
+  favoritesList: {
+    type: [City],
     required: true,
     default: [],
   },
   bucketList: {
-    type: [Country],
+    type: [City],
     required: true,
     default: [],
   },
-
-  //   orders: [Order.schema]
 });
 
 // set up pre-save middleware to create password
