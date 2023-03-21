@@ -6,6 +6,7 @@ const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 const resolvers = {
 	Query: {
 		getAllUsers: async (_parent, _args, context) => {
+      if (!context.user) throw new AuthenticationError('Not logged in');
       try {
         return await User.find()
       } catch (err) {
@@ -13,7 +14,29 @@ const resolvers = {
 				return err
       }
     },
+    getAllComment: async(_parent, {city}, context) => {
+      try{
+        if (!context.user) throw new AuthenticationError('Not logged in');
+        return await Comment.find({city});
+      } catch (err) {
+        console.log(err);
+        return err;
+      }
+    },
+
+    
+    me: async(_parent, args, context) => {
+      if (!context.user) throw new AuthenticationError('Not logged in');
+      try{
+        return await User.findById(context.user._id);
+      }catch (err){
+        console.log(err);
+        return err
+      }
+    },
+   
 	},
+  
 
 	Mutation: {
 		createUser: async (_parent, args) => {
