@@ -14,20 +14,23 @@ const resolvers = {
 				return err
       }
     },
-    getAllComment: async(_parent, {city}, context) => {
-      try{
+
+    getAllComments: async(_parent, {city}, context) => {
+      try {
         if (!context.user) throw new AuthenticationError('Not logged in');
-        return await Comment.find({city});
+
+        const chat = await Chat.findOne({ "city.name": city });
+        return chat.comments
       } catch (err) {
         console.log(err);
         return err;
       }
     },
-
     
     me: async(_parent, args, context) => {
       if (!context.user) throw new AuthenticationError('Not logged in');
-      try{
+
+      try {
         return await User.findById(context.user._id);
       }catch (err){
         console.log(err);
