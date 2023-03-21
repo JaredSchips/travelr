@@ -11,6 +11,7 @@ import Chat from "./components/Chat";
 import FavoriteCountries from "./components/FavList";
 import BucketList from "./components/BucketList";
 import VisitedPlaces from "./components/VisitedPlaces";
+import Statistics from "./components/Statistics";
 
 function App() {
   const [selection, selectionDispatch] = useReducer(selectionReducer, null);
@@ -32,6 +33,7 @@ function App() {
                 <Route path="/favorite" element={<FavoriteCountries />} />
                 <Route path="/bucket" element={<BucketList />} />
                 <Route path="/visited" element={<VisitedPlaces />} />
+                <Route path="/stats" element={<Statistics />} />
               </Routes>
             </BrowserRouter>
           </div>
