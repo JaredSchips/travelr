@@ -32,8 +32,14 @@ function App() {
                   path="/"
                   element={<Homepage setIconsBlack={setIconsBlack} />}
                 />
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/signup" element={<SignupPage />} />
+                <Route
+                  path="/login"
+                  element={<LoginPage setIconsBlack={setIconsBlack} />}
+                />
+                <Route
+                  path="/signup"
+                  element={<SignupPage setIconsBlack={setIconsBlack} />}
+                />
                 <Route
                   path="/profile"
                   element={<ProfilePage setIconsBlack={setIconsBlack} />}
@@ -42,10 +48,22 @@ function App() {
                   path="/chat"
                   element={<Chat setIconsBlack={setIconsBlack} />}
                 />
-                <Route path="/favorite" element={<FavoriteCountries />} />
-                <Route path="/bucket" element={<BucketList />} />
-                <Route path="/visited" element={<VisitedPlaces />} />
-                <Route path="/stats" element={<Statistics />} />
+                <Route
+                  path="/favorite"
+                  element={<FavoriteCountries setIconsBlack={setIconsBlack} />}
+                />
+                <Route
+                  path="/bucket"
+                  element={<BucketList setIconsBlack={setIconsBlack} />}
+                />
+                <Route
+                  path="/visited"
+                  element={<VisitedPlaces setIconsBlack={setIconsBlack} />}
+                />
+                <Route
+                  path="/stats"
+                  element={<Statistics setIconsBlack={setIconsBlack} />}
+                />
               </Routes>
             </BrowserRouter>
           </div>

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import image from "./globe.png";
 import "./BucketList.css";
 
@@ -14,6 +15,24 @@ function BucketList() {
     "Colombia",
   ]);
   const [newCountry, setNewCountry] = useState("");
+  const [countryImages, setCountryImages] = useState([]);
+
+  const UNSPLASH_API_KEY = "80B5-eXWcv50qvBAsd-jGPth_omIc7BfqsgLLClSta8";
+
+  useEffect(() => {
+    async function fetchImages() {
+      const images = await Promise.all(
+        countries.map(async (country) => {
+          const response = await axios.get(
+            `https://api.unsplash.com/search/photos?query=${country}&client_id=${UNSPLASH_API_KEY}&per_page=1`
+          );
+          return response.data.results[0]?.urls.small || null;
+        })
+      );
+      setCountryImages(images);
+    }
+    fetchImages();
+  }, [countries]);
 
   const handleAddCountry = () => {
     if (newCountry.trim() !== "") {
@@ -38,10 +57,19 @@ function BucketList() {
             {countries.map((country, index) => (
               <div
                 key={index}
-                className="country-block bg-white text-purple-500 p-2 rounded-lg"
+                className="country-block bg-white text-white p-2 rounded-lg relative"
               >
-                {"🌏 "}
-                {country}
+                {countryImages[index] && (
+                  <img
+                    src={countryImages[index]}
+                    alt={country}
+                    className="w-full h-full object-cover absolute inset-0 z-0 rounded-lg"
+                  />
+                )}
+                <div className="z-10 relative">
+                  {"🌏 "}
+                  {country}
+                </div>
               </div>
             ))}
           </div>

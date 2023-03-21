@@ -1,9 +1,28 @@
 .country-block {
-    transition: background-color 0.3s, color 0.3s;
+    height: 140px;
+    width: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
 }
 
-.country-block:hover {
-    background-color: #7c3aed;
-    color: white;
-    cursor: pointer;
+.country-block img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.country-block:hover img {
+    transform: scale(1.1);
+}
+
+.country-block .country-label {
+    position: relative;
+    z-index: 1;
 }
