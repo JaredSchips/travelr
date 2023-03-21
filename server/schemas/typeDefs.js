@@ -44,6 +44,7 @@ const typeDefs = gql`
   type Query {
     getAllUsers: [User]
     me: User
+    getAllComments( city: String! ): [Comment]
   }
 
   type Mutation {
