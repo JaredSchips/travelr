@@ -11,9 +11,14 @@ import BucketList from "../components/BucketList";
 import FavoriteCountries from "../components/FavList";
 import Chat from "../components/Chat";
 
+import { useQuery } from '@apollo/client';
+import { ME } from "../utils/queries";
+
 const ProfilePage = ({ setIconsBlack }) => {
   setIconsBlack(true);
   const [currentPage, setCurrentPage] = useState(1);
+  const { data } = useQuery(ME)
+  const me = data.me
 
   const renderPage = () => {
     switch (currentPage) {
@@ -23,6 +28,8 @@ const ProfilePage = ({ setIconsBlack }) => {
         return <FavoriteCountries />;
       case 4:
         return <Chat />;
+      default:
+        return
     }
   };
 
@@ -39,8 +46,8 @@ const ProfilePage = ({ setIconsBlack }) => {
           alt="Profile"
           className="w-40 h-40 rounded-full"
         />
-        <h1 className="mt-4 text-2xl font-bold">John Doe</h1>
-        <p className="mt-2 text-gray-500">Traveler</p>
+        <h1 className="mt-4 text-2xl font-bold">{me.firstName} {me.lastName}</h1>
+        <p className="mt-2 text-gray-500">{me.username}</p>
         <div className="mt-4  flex justify-between">
           <div className="">
             <a href="/favorite" onClick={() => setCurrentPage(3)}>
