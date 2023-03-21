@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import image from "./globe.png";
 
-const DiscussionBoard = () => {
+const DiscussionBoard = ({ setIconsBlack }) => {
   const [messages, setMessages] = useState([]);
-
+  setIconsBlack(true);
+  console.log(setIconsBlack);
   const handleMessageSubmit = (e) => {
     e.preventDefault();
     const username = e.target.username.value;
@@ -21,7 +22,6 @@ const DiscussionBoard = () => {
   };
 
   return (
-    
     <div className=" mb-10 ">
       <div className="flex justify-center">
         <img alt="" className="h-20 w-20" src={image} />
@@ -63,7 +63,6 @@ const DiscussionBoard = () => {
         ))}
       </div>
     </div>
-    
   );
 };
 

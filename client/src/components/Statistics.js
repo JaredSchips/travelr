@@ -3,7 +3,7 @@ import image from "./globe.png";
 import "./Statistics.css";
 
 function Statistics() {
-  const countriesVisited = 15;
+  const countriesVisited = 77;
   const countriesLiked = 8;
   const commentsMade = 25;
   const totalCountries = 195;

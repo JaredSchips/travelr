@@ -31,6 +31,10 @@ nav a {
     font-size: 1.1rem;
 }
 
+.iconBlack {
+    color: black;
+}
+
 nav a:hover {
     background: rgb(134, 133, 133);
 }
