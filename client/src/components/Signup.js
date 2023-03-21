@@ -3,6 +3,10 @@ import { signupFields } from "../constants/FormFields";
 import FormAction from "./FormAction";
 import Input from "./Input";
 
+import { useMutation } from '@apollo/client';
+import Auth from '../utils/auth';
+import { CREATE_USER } from '../utils/mutations';
+
 const fields = signupFields;
 let fieldsState = {};
 
@@ -10,6 +14,8 @@ fields.forEach((field) => (fieldsState[field.id] = ""));
 
 export default function Signup() {
   const [signupState, setSignupState] = useState(fieldsState);
+  const [createUser, error] = useMutation(CREATE_USER);
+
 
   const handleChange = (e) =>
     setSignupState({ ...signupState, [e.target.id]: e.target.value });
@@ -19,9 +25,25 @@ export default function Signup() {
     console.log(signupState);
     createAccount();
   };
-
+  
   //handle Signup API Integration here
-  const createAccount = () => {};
+  const createAccount = async () => {
+    try {
+        const mutationResponse = await createUser({
+        variables: {
+          email: signupState.email,
+          password: signupState.password,
+          firstName: signupState.firstName,
+          lastName: signupState.lastName,
+        },
+      });
+      const token = mutationResponse.data.addUser.token;
+      Auth.login(token);
+    }
+    catch (err) {
+      console.log(err)
+    }
+  };
 
   return (
     <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
@@ -40,6 +62,7 @@ export default function Signup() {
             placeholder={field.placeholder}
           />
         ))}
+        {error.error && <div>error</div>}
         <FormAction handleSubmit={handleSubmit} text="Signup" />
       </div>
     </form>

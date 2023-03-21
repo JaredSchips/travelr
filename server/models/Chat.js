@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
-const Country = require("./Country");
+const City = require("./Country");
 const Comment = require("./Comment");
 const { Schema } = mongoose;
 
 const chatSchema = new Schema({
-  country: {
-    type: [Country],
+  city: {
+    type: City,
     required: true,
   },
   comments: {

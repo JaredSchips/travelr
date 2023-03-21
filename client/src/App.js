@@ -2,6 +2,15 @@ import { useReducer } from "react";
 import selectionReducer from "./context/selectionReducer";
 import { GlobalContext } from "./context/context";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+
 import Homepage from "./pages/Homepage";
 import SignupPage from "./pages/Signup";
 import LoginPage from "./pages/Login";
@@ -15,12 +24,31 @@ import Statistics from "./components/Statistics";
 import Footer from "./components/Footer";
 import { useState } from "react";
 
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
+
 function App() {
   const [selection, selectionDispatch] = useReducer(selectionReducer, null);
   const [iconBlack, setIconsBlack] = useState(false);
   console.log(iconBlack);
   return (
-    <>
+    <ApolloProvider client={client}>
       <GlobalContext.Provider value={{ selection, selectionDispatch }}>
         <div className="min-h-full h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-md w-full space-y-8">
@@ -69,7 +97,7 @@ function App() {
           </div>
         </div>
       </GlobalContext.Provider>
-    </>
+    </ApolloProvider>
   );
 }
 
