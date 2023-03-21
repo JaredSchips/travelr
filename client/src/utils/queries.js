@@ -48,22 +48,27 @@ export const QUERY_CATEGORIES = gql`
   }
 `;
 
-export const QUERY_USER = gql`
-  {
-    user {
+export const ME = gql`
+  query Me {
+    me {
+      _id
       firstName
       lastName
-      orders {
+      username
+      email
+      password
+      createdAt
+      bucketList {
         _id
-        purchaseDate
-        products {
-          _id
-          name
-          description
-          price
-          quantity
-          image
-        }
+        name
+      }
+      favoritesList {
+        _id
+        name
+      }
+      visitedCities {
+        _id
+        name
       }
     }
   }
