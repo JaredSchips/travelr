@@ -135,7 +135,7 @@ export default function Homepage({ setIconsBlack }) {
               </h5>
             </div>
             <p className="text-sm pr-2 overflow-auto max-h-48">{summary}</p>
-            <div className="w-full pt-5 flex justify-evenly">
+            {me && <div className="w-full pt-5 flex justify-evenly">
               <button onClick={onFavoriteClick} className="text-3xl w-fit">
                 {me.favoritesList.map(city => city.name)
                   .includes(selection.properties.name)
@@ -157,7 +157,7 @@ export default function Homepage({ setIconsBlack }) {
                 ? <BsBucketFill />
                 : <BsBucket /> }
               </button>
-            </div>
+            </div>}
           </div>
         </div>
       )}

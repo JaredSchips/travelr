@@ -65,7 +65,7 @@ function BucketList({ citiesList }) {
                 </div>
               </div>
             ))}
-            {!countries.length && <div className="text-white font-semibold">No cities visited!</div>}
+            {!countries.length && <div className="col-span-full text-white font-semibold">No cities in your bucket list!</div>}
           </div>
           <div className="flex">
             <input

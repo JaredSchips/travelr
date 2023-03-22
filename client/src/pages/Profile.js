@@ -20,6 +20,8 @@ const ProfilePage = ({ setIconsBlack }) => {
   const me = data?.me
 
   const renderPage = () => {
+    console.log(!(me?.favoritesList && me?.bucketList));
+    if (!(me?.favoritesList && me?.bucketList)) return
     switch (currentPage) {
       case 1:
         return <FavoriteCities citiesList={me.favoritesList.map(city => city.name)} />;
