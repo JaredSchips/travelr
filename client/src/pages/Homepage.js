@@ -53,7 +53,6 @@ export default function Homepage({ setIconsBlack }) {
           country: selection.properties.adm0name
         }
       })
-      console.log(`${selection.properties.name} in ${selection.properties.adm0name} added to favorites!`)
     }
 
     refetch()
