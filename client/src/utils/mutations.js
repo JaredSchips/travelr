@@ -113,3 +113,22 @@ export const DELETE_BUCKET_LIST_ITEM = gql`
     }
   }
 `
+
+export const CREATE_COMMENT = gql`
+  mutation CreateComment(
+    $city: String!,
+    $message: String!
+    ) {
+    createComment(
+      city: $city,
+      message: $message
+      ) {
+      _id
+      user {
+        _id
+        username
+      }
+      message
+    }
+  }
+`

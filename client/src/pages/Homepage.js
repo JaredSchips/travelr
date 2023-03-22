@@ -142,9 +142,9 @@ export default function Homepage({ setIconsBlack }) {
                 ? <AiFillHeart />
                 : <AiOutlineHeart />}
               </button>
-              <button className="text-3xl w-fit">
+              <a href={`/chat/${selection.properties.name}`} className="text-3xl w-fit">
                 <BiMessageSquareDetail />
-              </button>
+              </a>
               <button onClick={onVisitedClick} className="text-3xl w-fit">
                 {me.visitedCities.map(city => city.name)
                   .includes(selection.properties.name)

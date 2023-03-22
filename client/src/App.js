@@ -71,7 +71,7 @@ function App() {
                   element={<ProfilePage setIconsBlack={setIconsBlack} />}
                 />
                 <Route
-                  path="/chat"
+                  path="/chat/*"
                   element={<Chat setIconsBlack={setIconsBlack} />}
                 />
                 <Route

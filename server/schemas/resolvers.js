@@ -19,7 +19,8 @@ const resolvers = {
       try {
         if (!context.user) throw new AuthenticationError('Not logged in');
 
-        const chat = await Chat.findOne({ "city.name": city });
+        const chat = await Chat.findOne({ "city.name": city })
+          .populate({ path: 'comments.user' });
         return chat.comments
       } catch (err) {
         console.log(err);
