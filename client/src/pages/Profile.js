@@ -7,7 +7,7 @@ import {
   FaGlobeEurope,
 } from "react-icons/fa";
 import BucketList from "../components/BucketList";
-import FavoriteCountries from "../components/FavList";
+import FavoriteCities from "../components/FavList";
 import Statistics from "../components/Statistics";
 
 import { useQuery } from '@apollo/client';
@@ -22,7 +22,7 @@ const ProfilePage = ({ setIconsBlack }) => {
   const renderPage = () => {
     switch (currentPage) {
       case 1:
-        return <FavoriteCountries />;
+        return <FavoriteCities citiesList={me.favoritesList.map(city => city.name)} />;
       case 2:
         return <Statistics user={me} />;
       case 3:
