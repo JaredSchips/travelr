@@ -5,17 +5,21 @@ import { useState } from "react";
 import { BiMessageSquareDetail } from "react-icons/bi";
 import {
   AiOutlinePlusCircle,
-  AiOutlineUnorderedList,
+  AiFillPlusCircle,
   AiOutlineHeart,
   AiFillHeart,
   AiOutlineClose,
 } from "react-icons/ai";
+import { BsBucket, BsBucketFill } from "react-icons/bs";
 import { SET_SELECTION } from "../context/actions";
 
 import { useMutation, useQuery } from "@apollo/client";
 import {
   ADD_FAVORITE,
-  DELETE_FAVORITE
+  DELETE_FAVORITE,
+  ADD_VISITED,
+  ADD_BUCKET_LIST_ITEM,
+  DELETE_BUCKET_LIST_ITEM
 } from "../utils/mutations";
 import { ME } from '../utils/queries'
 
@@ -26,6 +30,9 @@ export default function Homepage({ setIconsBlack }) {
   const [imageUrl, setImageUrl] = useState("");
   const [addFavorite] = useMutation(ADD_FAVORITE)
   const [deleteFavorite] = useMutation(DELETE_FAVORITE)
+  const [addVisited] = useMutation(ADD_VISITED)
+  const [addBucketListItem] = useMutation(ADD_BUCKET_LIST_ITEM)
+  const [deleteBucketListItem] = useMutation(DELETE_BUCKET_LIST_ITEM)
   const { data, refetch } = useQuery(ME)
   const me = data?.me
 
@@ -41,6 +48,44 @@ export default function Homepage({ setIconsBlack }) {
     
     else {
       addFavorite({
+        variables: {
+          city: selection.properties.name,
+          country: selection.properties.adm0name
+        }
+      })
+      console.log(`${selection.properties.name} in ${selection.properties.adm0name} added to favorites!`)
+    }
+
+    refetch()
+  }
+
+  function onVisitedClick() {
+    if (me.visitedCities.map(city => city.name).includes(selection.properties.name)) {
+      return
+    }
+
+    addVisited({
+      variables: {
+        city: selection.properties.name,
+        country: selection.properties.adm0name
+      }
+    })
+
+    refetch()
+  }
+
+  function onBucketListClick() {
+    if (me.bucketList.map(city => city.name).includes(selection.properties.name)) {
+      deleteBucketListItem({
+        variables: {
+          city: selection.properties.name
+        }
+      })
+      console.log('deleted!')
+    }
+    
+    else {
+      addBucketListItem({
         variables: {
           city: selection.properties.name,
           country: selection.properties.adm0name
@@ -100,11 +145,17 @@ export default function Homepage({ setIconsBlack }) {
               <button className="text-3xl w-fit">
                 <BiMessageSquareDetail />
               </button>
-              <button className="text-3xl w-fit">
-                <AiOutlinePlusCircle />
+              <button onClick={onVisitedClick} className="text-3xl w-fit">
+                {me.visitedCities.map(city => city.name)
+                  .includes(selection.properties.name)
+                ? <AiFillPlusCircle />
+                : <AiOutlinePlusCircle />}
               </button>
-              <button className="text-3xl w-fit">
-                <AiOutlineUnorderedList />
+              <button onClick={onBucketListClick} className="text-3xl w-fit">
+                {me.bucketList.map(city => city.name)
+                  .includes(selection.properties.name)
+                ? <BsBucketFill />
+                : <BsBucket /> }
               </button>
             </div>
           </div>

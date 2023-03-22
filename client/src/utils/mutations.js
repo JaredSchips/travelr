@@ -70,3 +70,46 @@ export const DELETE_FAVORITE = gql`
     }
   }
 `
+
+export const ADD_VISITED = gql`
+  mutation AddToVisitedCities($city: String!, $country: String!) {
+    addToVisitedCities(
+      city: $city,
+      country: $country
+      ) {
+      _id
+      name
+      country
+    }
+  }
+`
+
+export const ADD_BUCKET_LIST_ITEM = gql`
+  mutation AddToBucketList(
+    $city: String!,
+    $country: String!
+    ) {
+    addToBucketList(
+      city: $city,
+      country: $country
+      ) {
+      _id
+      name
+      country
+    }
+  }
+`
+
+export const DELETE_BUCKET_LIST_ITEM = gql`
+  mutation DeleteFromBucketList(
+    $city: String!
+    ) {
+    deleteFromBucketList(
+      city: $city
+      ) {
+      _id
+      name
+      country
+    }
+  }
+`
