@@ -3,9 +3,9 @@ import { signupFields } from "../constants/FormFields";
 import FormAction from "./FormAction";
 import Input from "./Input";
 
-import { useMutation } from '@apollo/client';
-import Auth from '../utils/auth';
-import { CREATE_USER } from '../utils/mutations';
+import { useMutation } from "@apollo/client";
+import Auth from "../utils/auth";
+import { CREATE_USER } from "../utils/mutations";
 
 const fields = signupFields;
 let fieldsState = {};
@@ -16,7 +16,6 @@ export default function Signup() {
   const [signupState, setSignupState] = useState(fieldsState);
   const [createUser, error] = useMutation(CREATE_USER);
 
-
   const handleChange = (e) =>
     setSignupState({ ...signupState, [e.target.id]: e.target.value });
 
@@ -24,23 +23,22 @@ export default function Signup() {
     e.preventDefault();
     createAccount();
   };
-  
+
   //handle Signup API Integration here
   const createAccount = async () => {
     try {
       const mutationResponse = await createUser({
         variables: {
           username: signupState.username,
-          email: signupState['email-address'],
+          email: signupState["email-address"],
           password: signupState.password,
         },
       });
       const token = mutationResponse.data.createUser.token;
       Auth.login(token);
-      window.location.pathname = '/profile'
-    }
-    catch (err) {
-      console.log(err)
+      window.location.pathname = "/profile";
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -61,7 +59,11 @@ export default function Signup() {
             placeholder={field.placeholder}
           />
         ))}
-        {error.error && <div className="text-pink-500 font-bold">An error occured during the signup process.</div>}
+        {error.error && (
+          <div className="text-pink-500 font-bold">
+            An error occured during the signup process.
+          </div>
+        )}
         <FormAction handleSubmit={handleSubmit} text="Signup" />
       </div>
       <div className=""></div>
