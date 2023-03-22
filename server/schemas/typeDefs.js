@@ -9,6 +9,7 @@ const typeDefs = gql`
   type City {
     _id: ID
     name: String
+    country: String
   }
 
   type User {
@@ -49,12 +50,10 @@ const typeDefs = gql`
 
   type Mutation {
     createUser(
-      firstName: String!,
-      lastName: String!,
       username: String!,
       email: String!,
       password: String!
-      ): User
+      ): Auth
     
     login(
       email: String!,
@@ -70,7 +69,8 @@ const typeDefs = gql`
     ): User
 
     addToBucketList(
-      city: String!
+      city: String!,
+      country: String!
     ): City
 
     deleteFromBucketList(
@@ -78,7 +78,8 @@ const typeDefs = gql`
     ): City
 
     addToFavorites(
-      city: String!
+      city: String!,
+      country: String!
     ): City
 
     deleteFromFavorites(
@@ -86,7 +87,8 @@ const typeDefs = gql`
     ): City
 
     addToVisitedCities(
-      city: String!
+      city: String!,
+      country: String!
     ): City
 
     createComment(

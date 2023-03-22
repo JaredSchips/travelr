@@ -22,23 +22,22 @@ export default function Signup() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(signupState);
     createAccount();
   };
   
   //handle Signup API Integration here
   const createAccount = async () => {
     try {
-        const mutationResponse = await createUser({
+      const mutationResponse = await createUser({
         variables: {
-          email: signupState.email,
+          username: signupState.username,
+          email: signupState['email-address'],
           password: signupState.password,
-          firstName: signupState.firstName,
-          lastName: signupState.lastName,
         },
       });
-      const token = mutationResponse.data.addUser.token;
+      const token = mutationResponse.data.createUser.token;
       Auth.login(token);
+      window.location.pathname = '/profile'
     }
     catch (err) {
       console.log(err)
@@ -62,9 +61,10 @@ export default function Signup() {
             placeholder={field.placeholder}
           />
         ))}
-        {error.error && <div>error</div>}
+        {error.error && <div className="text-pink-500 font-bold">An error occured during the signup process.</div>}
         <FormAction handleSubmit={handleSubmit} text="Signup" />
       </div>
+      <div className=""></div>
     </form>
   );
 }

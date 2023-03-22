@@ -46,11 +46,10 @@ const client = new ApolloClient({
 function App() {
   const [selection, selectionDispatch] = useReducer(selectionReducer, null);
   const [iconBlack, setIconsBlack] = useState(false);
-  console.log(iconBlack);
   return (
     <ApolloProvider client={client}>
       <GlobalContext.Provider value={{ selection, selectionDispatch }}>
-        <div className="min-h-full h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-md w-full space-y-8">
             <BrowserRouter>
               <NavigationBar iconBlack={iconBlack} />
@@ -72,7 +71,7 @@ function App() {
                   element={<ProfilePage setIconsBlack={setIconsBlack} />}
                 />
                 <Route
-                  path="/chat"
+                  path="/chat/*"
                   element={<Chat setIconsBlack={setIconsBlack} />}
                 />
                 <Route
@@ -93,9 +92,9 @@ function App() {
                 />
               </Routes>
             </BrowserRouter>
-            <Footer />
           </div>
         </div>
+        <Footer />
       </GlobalContext.Provider>
     </ApolloProvider>
   );

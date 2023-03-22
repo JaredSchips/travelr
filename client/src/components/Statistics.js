@@ -2,10 +2,11 @@ import React from "react";
 import image from "./globe.png";
 import "./Statistics.css";
 
-function Statistics() {
-  const countriesVisited = 77;
-  const countriesLiked = 8;
-  const commentsMade = 25;
+function Statistics({ user }) {
+  console.log(user)
+  const citiesVisited = user.visitedCities.length;
+  const countriesVisited = new Set(user.visitedCities.map(city => city.country)).size;
+  const citiesLiked = user.favoritesList.length;
   const totalCountries = 195;
   const visitedPercentage = (countriesVisited / totalCountries) * 100;
 
@@ -26,17 +27,17 @@ function Statistics() {
               </h3>
               <p className="text-gray-700 font-semibold">Countries Visited</p>
             </div>
-            <div className="statistic-item">
+          <div className="statistic-item">
               <h3 className="text-purple-500 text-3xl font-bold">
-                {countriesLiked}
+                {citiesVisited}
               </h3>
-              <p className="text-gray-700 font-semibold">Countries Liked</p>
+              <p className="text-gray-700 font-semibold">Cities Visited</p>
             </div>
             <div className="statistic-item">
               <h3 className="text-purple-500 text-3xl font-bold">
-                {commentsMade}
+                {citiesLiked}
               </h3>
-              <p className="text-gray-700 font-semibold">Comments Made</p>
+              <p className="text-gray-700 font-semibold">Cities <br/> Liked</p>
             </div>
           </div>
           <div>

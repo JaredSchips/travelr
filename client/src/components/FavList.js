@@ -3,17 +3,8 @@ import axios from "axios";
 import image from "./globe.png";
 import "./FavoriteCountries.css";
 
-function FavoriteCountries() {
-  const [favoriteCountries, setFavoriteCountries] = useState([
-    "Japan",
-    "Australia",
-    "Costa Rica",
-    "Finland",
-    "Hungary",
-    "Jordan",
-    "Maldives",
-    "Mexico",
-  ]);
+function FavoriteCountries({ citiesList }) {
+  const [favoriteCountries, setFavoriteCountries] = useState(citiesList);
   const [newCountry, setNewCountry] = useState("");
   const [countryImages, setCountryImages] = useState([]);
 
@@ -74,6 +65,7 @@ function FavoriteCountries() {
                 </div>
               </div>
             ))}
+            {!favoriteCountries.length && <div className="col-span-full text-white font-semibold">No cities favorited!</div>}
           </div>
           <div className="flex">
             <input
