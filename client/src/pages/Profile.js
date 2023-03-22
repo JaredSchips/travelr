@@ -24,7 +24,7 @@ const ProfilePage = ({ setIconsBlack }) => {
       case 1:
         return <FavoriteCountries />;
       case 2:
-        return <Statistics />;
+        return <Statistics user={me} />;
       case 3:
         return <BucketList citiesList={me.bucketList.map(city => city.name)} />;
       default:

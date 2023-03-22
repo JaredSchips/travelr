@@ -57,13 +57,13 @@ const resolvers = {
         { new: true });
     },
 
-    addToBucketList: async(_parent, { city }, context) => {
+    addToBucketList: async(_parent, { city, country }, context) => {
       if (!context.user) throw new AuthenticationError('Not logged in');
 
       console.log(city)
       
       const user = await User.findByIdAndUpdate(context.user._id,
-        { $push: { bucketList: { name: city } } },
+        { $push: { bucketList: { name: city, country: country } } },
         { new: true })
       
       return user.bucketList[user.bucketList.length-1]
@@ -78,11 +78,11 @@ const resolvers = {
       return user.bucketList.filter(item => item.name === city)[0]
     },
 
-    addToFavorites: async(_parent, { city }, context) => {
+    addToFavorites: async(_parent, { city, country }, context) => {
       if (!context.user) throw new AuthenticationError('Not logged in');
 
       const user = await User.findByIdAndUpdate(context.user._id,
-        { $push: { favoritesList: { name: city } } },
+        { $push: { favoritesList: { name: city, country: country } } },
         { new: true })
       
       return user.favoritesList[user.favoritesList.length-1]
@@ -97,11 +97,11 @@ const resolvers = {
         return user.favoritesList.filter(item => item.name === city)[0]
     },
 
-    addToVisitedCities: async(_parent, { city }, context) => {
+    addToVisitedCities: async(_parent, { city, country }, context) => {
       if (!context.user) throw new AuthenticationError('Not logged in');
 
       const user = await User.findByIdAndUpdate(context.user._id,
-        { $push: { visitedCities: { name: city } } },
+        { $push: { visitedCities: { name: city, country: country } } },
         { new: true })
       
       return user.visitedCities[user.visitedCities.length-1]
