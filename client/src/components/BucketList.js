@@ -3,22 +3,13 @@ import axios from "axios";
 import image from "./globe.png";
 import "./BucketList.css";
 
-function BucketList() {
-  const [countries, setCountries] = useState([
-    "Japan",
-    "Australia",
-    "Iceland",
-    "France",
-    "Germany",
-    "Albania",
-    "Chile",
-    "Colombia",
-  ]);
+function BucketList({ citiesList }) {
+  const [countries, setCountries] = useState(citiesList);
   const [newCountry, setNewCountry] = useState("");
   const [countryImages, setCountryImages] = useState([]);
-
+  
   const UNSPLASH_API_KEY = "80B5-eXWcv50qvBAsd-jGPth_omIc7BfqsgLLClSta8";
-
+  
   useEffect(() => {
     async function fetchImages() {
       const images = await Promise.all(
@@ -74,6 +65,7 @@ function BucketList() {
                 </div>
               </div>
             ))}
+            {!countries.length && <div className="text-white font-semibold">No cities visited!</div>}
           </div>
           <div className="flex">
             <input

@@ -4,12 +4,10 @@ import profileImage from "./profile-image.jpg";
 import {
   FaHeart,
   FaChartLine,
-  FaEnvelopeOpenText,
   FaGlobeEurope,
 } from "react-icons/fa";
 import BucketList from "../components/BucketList";
 import FavoriteCountries from "../components/FavList";
-import Chat from "../components/Chat";
 import Statistics from "../components/Statistics";
 
 import { useQuery } from '@apollo/client';
@@ -28,7 +26,7 @@ const ProfilePage = ({ setIconsBlack }) => {
       case 2:
         return <Statistics />;
       case 3:
-        return <BucketList />;
+        return <BucketList citiesList={me.bucketList.map(city => city.name)} />;
       default:
         return
     }
