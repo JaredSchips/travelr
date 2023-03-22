@@ -30,8 +30,6 @@ export default function Signup() {
     try {
       const mutationResponse = await createUser({
         variables: {
-          firstName: "Jared",
-          lastName: "Schips",
           username: signupState.username,
           email: signupState['email-address'],
           password: signupState.password,

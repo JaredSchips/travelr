@@ -47,8 +47,7 @@ const ProfilePage = ({ setIconsBlack }) => {
           alt="Profile"
           className="w-40 h-40 rounded-full"
         />
-        <h1 className="mt-4 text-2xl font-bold">{me?.firstName} {me?.lastName}</h1>
-        <p className="mt-2 text-gray-500">{me?.username}</p>
+        <h1 className="mt-4 text-2xl font-bold">{me?.username}</h1>
         <div className="mt-4  flex justify-between">
           <div className="">
             <a href="#" onClick={() => setCurrentPage(1)}>
