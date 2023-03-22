@@ -2,6 +2,8 @@
 
 - [Live Link to Heroku APP]()
 
+![Getting Started](./src/components/Globe.jpg)
+
 ## Table of Contents
 
 - [Description](#description)
@@ -56,13 +58,10 @@ THEN I am taken back to the globe and I can select another location
 - ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
 - ![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
 
-## Application Screenshot Preview
-
 ## Developers
 
 - Jared Schips (JaredSchips) [Link to Github](https://github.com/JaredSchips)
 - Omar Correa (Omar-Correa)[Link to Github](https://github.com/omar-correa)
-- Daphne Tate (Daphnetatertot) [Link to Github](https://github.com/Daphnetatertot)
 - Martin Cespedes (MartinCespedes) [Link to Github](https://github.com/MartinCespedes)
 - Vlada Bolotova (Vlada) [Link to Github](https://github.com/VladaBolotova)
 
