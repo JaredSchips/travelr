@@ -4,6 +4,7 @@ import { AiOutlineHome } from "react-icons/ai";
 import { AiOutlineUser } from "react-icons/ai";
 import { HiOutlineUserGroup } from "react-icons/hi";
 import { BiMessageSquareDetail } from "react-icons/bi";
+import { Link } from "react-router-dom"
 
 const Nav = ({ iconBlack }) => {
   const [activeNav, setActiveNav] = useState("#");
@@ -11,29 +12,33 @@ const Nav = ({ iconBlack }) => {
   const iconClass = iconBlack ? "iconBlack" : "";
 
   return (
-    <nav>
-      <a
-        href="/"
-        onClick={() => setActiveNav("#")}
-        className={`${activeNav === "#" ? "active" : ""} ${iconClass}`}
-      >
-        <AiOutlineHome />
-      </a>
-      <a
-        href="/signUp"
-        onClick={() => setActiveNav("#log-in")}
-        className={`${activeNav === "#log-in" ? "active" : ""} ${iconClass}`}
-      >
-        <AiOutlineUser />
-      </a>
-      <a
-        href="/profile"
-        onClick={() => setActiveNav("#sign-up")}
-        className={`${activeNav === "#sign-up" ? "active" : ""} ${iconClass}`}
-      >
-        <HiOutlineUserGroup />
-      </a>
-    </nav>
+		<nav>
+			<Link
+				to="/"
+				onClick={() => setActiveNav('#')}
+				className={`${activeNav === '#' ? 'active' : ''} ${iconClass}`}
+			>
+				<AiOutlineHome />
+			</Link>
+			<Link
+				to="/signUp"
+				onClick={() => setActiveNav('#log-in')}
+				className={`${
+					activeNav === '#log-in' ? 'active' : ''
+				} ${iconClass}`}
+			>
+				<AiOutlineUser />
+			</Link>
+			<Link
+				to="/profile"
+				onClick={() => setActiveNav('#sign-up')}
+				className={`${
+					activeNav === '#sign-up' ? 'active' : ''
+				} ${iconClass}`}
+			>
+				<HiOutlineUserGroup />
+			</Link>
+		</nav>
   );
 };
 
