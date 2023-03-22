@@ -2,7 +2,7 @@
 
 - [Live Link to Heroku APP]()
 
-![Getting Started](./src/components/Globe.jpg)
+![Getting Started](./client/src/components/Globe.jpg)
 
 ## Table of Contents
 
