@@ -46,7 +46,6 @@ const client = new ApolloClient({
 function App() {
   const [selection, selectionDispatch] = useReducer(selectionReducer, null);
   const [iconBlack, setIconsBlack] = useState(false);
-  console.log(iconBlack);
   return (
     <ApolloProvider client={client}>
       <GlobalContext.Provider value={{ selection, selectionDispatch }}>
