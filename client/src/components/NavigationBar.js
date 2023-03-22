@@ -33,13 +33,6 @@ const Nav = ({ iconBlack }) => {
       >
         <HiOutlineUserGroup />
       </a>
-      <a
-        href="/chat"
-        onClick={() => setActiveNav("#chat")}
-        className={`${activeNav === "#chat" ? "active" : ""} ${iconClass}`}
-      >
-        <BiMessageSquareDetail />
-      </a>
     </nav>
   );
 };
