@@ -1,127 +1,46 @@
-## Project Travelr
+## Travelr
 
 - [Live Link to Heroku APP]()
+
+![Getting Started](./client/src/components/Globe.jpg)
 
 ## Table of Contents
 
 - [Description](#description)
 - [User Story](#user-story)
-- [Project Requirements](#project-requirements)
-- [Installation](#installation)
-- [Usage](#usage)
+- [Acceptance Criteria](#acceptance-criteria)
 - [Technologies Used](#technologies-used)
-- [Features](#features)
-- [Application Screenshot Preview](#application-screenshot-preview)
 - [Developers](#developers)
 - [License](#License)
 
 ## Description
 
-A full-stack MERN application is a web app that uses MongoDB, Express.js, React, and Node.js to provide a complete end-to-end solution.
-
-MERN apps typically include a React-based client-side interface that communicates with an Express.js-based server-side API. Additional tools like Webpack, Apollo-GraphQL, and Bootstrap may be used.
-
-MERN apps are popular due to their flexibility, scalability, and ability to deliver high-performance web applications.
+This is an app tailored to different types of people. On one hand, you can browse through the cities and countries that appear on the globe, click on them, and get general information about that location. On the other hand, the app also allows individuals to create user profiles which allow them to keep track of all the beautiful places around the world they have visited, plan future expeditions, and chat with friends and strangers alike.
 
 ## User Story
 
-- As a user, I want to be able to create and manage my own posts, as well as view and interact with posts created by other users.
-- I want the interface to be intuitive and easy to navigate, and I want to be able to search for specific posts using keywords.
-- Additionally, I want the application to be responsive and work well on both desktop and mobile devices.
-- I also want to feel secure using the application, so I expect the application to include user authentication and protect sensitive information.
-- Ultimately, I want to have a positive user experience and feel like the application is providing value to me.
+I WANT to click on a city
+SO THAT I can get general information about that city and add it to a list of favorites, places visited, and participate in a chat
 
-## Project Requirements
+## Acceptance Criteria
 
-- Use React for the front end.
-
-- Use GraphQL with a Node.js and Express.js server.
-
-- Use MongoDB and the Mongoose ODM for the database.
-
-- Use queries and mutations for retrieving, adding, updating, and deleting data.
-
-- Be deployed using Heroku (with data).
-
-- Have a polished UI.
-
-- Be responsive.
-
-- Be interactive (i.e., accept and respond to user input).
-
-- Include authentication (JWT).
-
-- Protect sensitive API key information on the server.
-
-- Have a clean repository that meets quality coding standards (file structure, naming conventions, best practices for class and id naming conventions, indentation, high-quality comments, and so on).
-
-- Have a high-quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
-
-## Presentation Requirements
-
-## Installation
-
-- Prerequisites
-
-```md
-- Bash
-- Node.js (v14 or higher)
-- MongoDB
-```
-
-- Installaion Steps:
-
-```md
-1. Clone the repository: git clone 'repository-url'
-
-2. Navigate to the project directory: cd 'project-folder'
-
-3. Install server-side dependencies: npm install
-
-4. Install client-side dependencies: cd client && npm install
-```
-
-5. Configure environment variables:
-
-- Create a .env file in the root directory and define the following variables:
-
-```md
-PORT='port-number'
-
-MONGO_URI='mongo-db-uri'
-
-JWT_SECRET='jwt-secret'
-```
-
-- Update the client/.env file with the following variable:
-
-```md
-REACT_APP_GRAPHQL_URI=http://localhost:'port-number/graphql'
-```
-
-6. Seed the database: npm run seed
-
-7. Start the development server: npm run dev
-
-```md
-That's it! You should now be able to access the application at http://localhost:'port-number'
-```
-
-## Usage
-
-- Access the application by navigating to the URL where it is hosted.
-
-- Upon loading, you will be presented with the home page of the application.
-
-- To create an account, navigate to the signup page and fill out the required fields.
-
-- Once you have created an account, you can log in with your credentials to access the protected features of the application.
-
-- Explore the functionality of the application, such as creating, editing, and deleting posts.
-
-- You can also browse posts created by other users on the home page and search for specific posts using keywords.
-
-- Once you have finished using the application, log out to ensure the security of your account.
+GIVEN I am using this app
+WHEN I get to the landing page
+THEN I see an interactive globe of the world
+WHEN I log in or sign up for an account
+THEN I can click on a city to get general information about it
+WHEN I click on city
+THEN I am presented with general information on that city
+WHEN I click on the heart button,
+THEN the city is added to my favorites list
+WHEN I click on the “plus” button
+THEN the city is added to a list of places visited
+WHEN I click on the “rows” button
+THEN the city is added to a bucket list
+WHEN I click on the chat button
+THEN I am taken to a chat page for that specific city
+WHEN I click on the home button
+THEN I am taken back to the globe and I can select another location
 
 ## Technologies Used
 
@@ -136,25 +55,12 @@ That's it! You should now be able to access the application at http://localhost:
 - ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 - ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 - ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
-- ![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
-
-## Application Screenshot Preview
-
-![GameList Screenshot 1]()
-
-##
-
-![GameList Screenshot 2]()
-
-##
-
-![GameList Screenshot 3]()
+- ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
 ## Developers
 
 - Jared Schips (JaredSchips) [Link to Github](https://github.com/JaredSchips)
 - Omar Correa (Omar-Correa)[Link to Github](https://github.com/omar-correa)
-- Daphne Tate (Daphnetatertot) [Link to Github](https://github.com/Daphnetatertot)
 - Martin Cespedes (MartinCespedes) [Link to Github](https://github.com/MartinCespedes)
 - Vlada Bolotova (Vlada) [Link to Github](https://github.com/VladaBolotova)
 
